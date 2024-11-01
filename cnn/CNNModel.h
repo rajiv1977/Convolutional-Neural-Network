@@ -10,19 +10,19 @@
 #include <vector>
 
 #include "ConvolutionalLayer.h"
-#include "CrossEntropyLoss.h"
-#include "DropoutLayer.h"
-#include "FlattenLayer.h"
-#include "FocalLoss.h" // Include your specific loss headers
-#include "FullyConnectedLayer.h"
-#include "L2Loss.h" // Include your specific loss headers
-#include "Layer.h"
-#include "Loss.h"
-#include "MeanSquaredError.h" // Include MeanSquaredError header
-#include "Model.h"
-#include "OutputLayer.h"
-#include "PoolingLayer.h"
-#include "ReLUActivationLayer.h"
+#include "CrossEntropyLoss.h" 
+#include "DropoutLayer.h" 
+#include "FlattenLayer.h" 
+#include "FocalLoss.h" 
+#include "FullyConnectedLayer.h" 
+#include "L2Loss.h"  
+#include "Layer.h" 
+#include "Loss.h" 
+#include "MeanSquaredError.h" 
+#include "Model.h" 
+#include "OutputLayer.h" 
+#include "PoolingLayer.h"  
+#include "ReLUActivationLayer.h" 
 
 /// @class CNNModel
 /// @brief A specific derived class representing a Convolutional Neural Network (CNN) model.
@@ -154,7 +154,15 @@ class CNNModel : public Model
             // Get predictions for the current validation sample
             auto valPredictions = Predict(valData[i]);
 
-            // Print the output
+            // Get the true classifications
+            auto valTruth = valLabels[i];
+
+            // Print the true classifications
+            std::cout << "truth" << std::endl;
+            std::copy(valTruth.begin(), valTruth.end(), std::ostream_iterator<float>(std::cout, " \t"));
+            std::cout << "\n" << std::endl; 
+
+            std::cout << "predicted" << std::endl;
             std::copy(valPredictions.begin(), valPredictions.end(), std::ostream_iterator<float>(std::cout, " \t"));
             std::cout << "\n" << std::endl; 
 
